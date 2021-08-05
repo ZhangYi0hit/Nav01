@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".post.PostDetailsActivity">
+
+    <ScrollView
+        android:id="@+id/postSummary"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        app:layout_constraintBottom_toTopOf="@id/commentList"
+
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/head"
+                android:layout_width="59dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/head" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/head"
+                android:text="username"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/username"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/head"
+                android:drawablePadding="2dp"
+                android:text="post_date" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/username"
+                android:layout_alignStart="@+id/date"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="-69dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginRight="89dp"
+
+                android:layout_toRightOf="@id/date"
+                android:drawablePadding="2dp"
+                android:text="post_time" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/time"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+
+                android:textColor="@color/black"
+                android:text="woofwoof"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="post_content"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="500dp"
+                android:layout_height="500dp"
+
+                android:layout_below="@id/content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+
+                app:srcCompat="@drawable/head" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/commentList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/theme_light_purple"
+        android:padding="10dp"
+
+
+        app:layout_constraintBottom_toTopOf="@id/addComment"
+        app:layout_constraintTop_toBottomOf="@id/postSummary" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/addComment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="add comment"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/commentForm"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_gravity="start|center"
+            android:layout_margin="10dp"
+            android:layout_marginHorizontal="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contentForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:hint="add_a_comment"
+                android:textSize="15dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancelReply"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="240dp"
+            android:backgroundTint="@color/theme_grey"
+            android:text="x"
+            android:textColor="@color/white"
+            android:layout_gravity="start|center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            >
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/send"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="@color/theme_purple"
+            android:text="send"
+            android:textColor="@color/white"
+            android:layout_gravity="end|center">
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </androidx.cardview.widget.CardView>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
